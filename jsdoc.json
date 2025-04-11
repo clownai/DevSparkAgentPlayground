@@ -1,0 +1,24 @@
+{
+  "source": {
+    "include": ["src", "README.md"],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": ["plugins/markdown"],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true
+    }
+  },
+  "opts": {
+    "destination": "./docs/api-docs",
+    "recurse": true,
+    "readme": "README.md"
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true
+  }
+}

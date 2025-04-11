@@ -1,0 +1,458 @@
+/* 
+ * Main CSS styles for DevSparkAgent Playground
+ */
+
+:root {
+  --primary-color: #4a6baf;
+  --primary-light: #7a9bdf;
+  --primary-dark: #2a4b8f;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --background-color: #f5f7fa;
+  --border-color: #dee2e6;
+  --text-color: #212529;
+  --text-muted: #6c757d;
+  --border-radius: 4px;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+}
+
+/* Base styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  transition: background-color var(--transition-speed);
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+}
+
+button:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
+}
+
+input, select, textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition: border-color var(--transition-speed);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary-color);
+  outline: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+th, td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid var(--border-color);
+  text-align: left;
+}
+
+th {
+  background-color: var(--light-color);
+  font-weight: 600;
+}
+
+/* Layout */
+.playground-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.playground-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+}
+
+.playground-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.playground-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.playground-controls button {
+  background-color: var(--primary-dark);
+}
+
+.playground-controls button:hover {
+  background-color: var(--primary-light);
+}
+
+.playground-content {
+  display: flex;
+  flex: 1;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.playground-sidebar {
+  width: 250px;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.playground-main-panel {
+  flex: 1;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.playground-footer {
+  background-color: var(--light-color);
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Components */
+.playground-component {
+  margin-bottom: 1.5rem;
+}
+
+.playground-component h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.playground-agent-list, .playground-population-list {
+  margin-bottom: 2rem;
+}
+
+.playground-agent-list-content, .playground-population-list-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.playground-agent-list ul, .playground-population-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.playground-agent-list li, .playground-population-list li {
+  margin-bottom: 0.5rem;
+}
+
+.playground-agent-list a, .playground-population-list a {
+  display: block;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-speed);
+}
+
+.playground-agent-list a:hover, .playground-population-list a:hover {
+  background-color: var(--light-color);
+  text-decoration: none;
+}
+
+.playground-agent-list a.active, .playground-population-list a.active {
+  background-color: var(--primary-light);
+  color: white;
+}
+
+.empty-list {
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 0.5rem;
+}
+
+/* Tabs */
+.playground-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+}
+
+.playground-tab-button {
+  background-color: transparent;
+  color: var(--text-color);
+  border: none;
+  padding: 0.75rem 1rem;
+  margin-right: 0.25rem;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  transition: background-color var(--transition-speed);
+}
+
+.playground-tab-button:hover {
+  background-color: var(--light-color);
+}
+
+.playground-tab-button.active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.playground-tab-content {
+  padding: 1rem 0;
+}
+
+.playground-tab-panel {
+  display: none;
+}
+
+.playground-tab-panel.active {
+  display: block;
+}
+
+/* Agent and Population Details */
+.playground-agent-details, .playground-population-details {
+  padding: 1rem;
+}
+
+.playground-agent-details-info, .playground-population-details-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.playground-agent-details-section, .playground-population-details-section {
+  background-color: var(--light-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.playground-agent-details-section h4, .playground-population-details-section h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.playground-agent-details-actions, .playground-population-details-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.playground-agent-details-actions button, .playground-population-details-actions button {
+  flex: 1;
+}
+
+#btn-delete-agent, #btn-delete-population {
+  background-color: var(--danger-color);
+}
+
+#btn-delete-agent:hover, #btn-delete-population:hover {
+  background-color: #bd2130;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* Dialog */
+.playground-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.playground-dialog-content {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.playground-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.playground-dialog-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.playground-dialog-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+}
+
+.playground-dialog-body {
+  padding: 1rem;
+}
+
+.playground-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Notifications */
+.playground-notification {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  max-width: 300px;
+  z-index: 1000;
+  animation: slide-in 0.3s ease-out;
+}
+
+.playground-notification-info {
+  background-color: var(--info-color);
+  color: white;
+}
+
+.playground-notification-success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.playground-notification-warning {
+  background-color: var(--warning-color);
+  color: var(--dark-color);
+}
+
+.playground-notification-error {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Benchmark Results */
+.benchmark-results {
+  padding: 1rem;
+}
+
+.benchmark-results h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .playground-content {
+    flex-direction: column;
+  }
+  
+  .playground-sidebar {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .playground-agent-details-info, .playground-population-details-info {
+    grid-template-columns: 1fr;
+  }
+}

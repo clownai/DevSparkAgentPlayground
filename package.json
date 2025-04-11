@@ -1,0 +1,21 @@
+{
+  "name": "devsparkagent-playground",
+  "version": "1.0.0",
+  "description": "A playground for DevSparkAgent development and testing",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:mocks": "node tests/run_tests_with_mocks.js"
+  },
+  "keywords": [
+    "devspark",
+    "agent",
+    "playground",
+    "ai"
+  ],
+  "author": "DevSpark Team",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

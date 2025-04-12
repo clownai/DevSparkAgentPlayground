@@ -1,0 +1,46 @@
+name: "SAC Pendulum Experiment"
+description: "Training a SAC agent on the Pendulum environment"
+version: "1.0.0"
+tags: ["reinforcement-learning", "continuous-action", "sac", "pendulum"]
+
+# Agent configuration
+agent:
+  name: "sac"
+  overrides:
+    parameters:
+      learning_rate: 0.0001
+      buffer_size: 500000
+      sac_specific:
+        alpha: 0.1
+        automatic_entropy_tuning: true
+    
+# Environment configuration
+environment:
+  name: "pendulum"
+  overrides:
+    parameters:
+      reward_scale: 0.1
+    
+# Experiment parameters
+parameters:
+  seed: 123
+  num_runs: 3
+  parallel: true
+  
+# Metrics to track
+metrics:
+  - name: "episode_reward"
+    type: "mean"
+  - name: "episode_length"
+    type: "mean"
+  - name: "critic_loss"
+    type: "mean"
+  - name: "actor_loss"
+    type: "mean"
+  - name: "alpha"
+    type: "mean"
+    
+# Visualization configuration
+visualization:
+  enabled: true
+  plots: ["reward_curve", "loss_curve", "temperature_curve"]

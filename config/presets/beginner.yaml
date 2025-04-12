@@ -1,0 +1,61 @@
+name: "Beginner Preset"
+description: "A simplified configuration preset for beginners"
+version: "1.0.0"
+
+# Default agent settings for beginners
+agent_defaults:
+  parameters:
+    learning_rate: 0.001
+    batch_size: 64
+    buffer_size: 10000
+    
+    # Network architecture
+    network:
+      hidden_layers: [64, 64]
+      activation: "relu"
+      
+  # Training configuration
+  training:
+    max_steps: 100000
+    max_episodes: 500
+    eval_frequency: 5000
+    save_frequency: 25000
+    
+  # Logging configuration
+  logging:
+    level: "info"
+    tensorboard: true
+    
+# Default environment settings for beginners
+environment_defaults:
+  parameters:
+    max_steps: 200
+    
+  # Rendering configuration
+  rendering:
+    enabled: true
+    mode: "human"
+    
+# Experiment defaults
+experiment_defaults:
+  parameters:
+    seed: 42
+    num_runs: 1
+    parallel: false
+    
+  # Visualization configuration
+  visualization:
+    enabled: true
+    plots: ["reward_curve"]
+    
+# Recommended combinations for beginners
+recommended_combinations:
+  - name: "PPO on CartPole"
+    agent: "ppo"
+    environment: "cartpole"
+    description: "Good starting point for discrete action spaces"
+    
+  - name: "SAC on Pendulum"
+    agent: "sac"
+    environment: "pendulum"
+    description: "Good starting point for continuous action spaces"

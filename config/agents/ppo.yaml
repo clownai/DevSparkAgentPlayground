@@ -1,0 +1,45 @@
+name: "PPO Agent"
+type: "PPO"
+version: "1.0.0"
+
+# Algorithm-specific parameters
+parameters:
+  # Common parameters
+  learning_rate: 0.0003
+  gamma: 0.99
+  batch_size: 64
+  buffer_size: 2048
+  
+  # PPO-specific parameters
+  ppo_specific:
+    epsilon: 0.2
+    value_coef: 0.5
+    entropy_coef: 0.01
+    lambda: 0.95
+    epochs: 10
+    
+  # Network architecture
+  network:
+    hidden_layers: [64, 64]
+    activation: "relu"
+    output_activation: "tanh"
+    
+# Training configuration
+training:
+  max_steps: 1000000
+  max_episodes: 1000
+  eval_frequency: 10000
+  save_frequency: 50000
+  
+# Logging configuration
+logging:
+  level: "info"
+  metrics: ["reward", "loss", "value_loss", "policy_loss", "entropy"]
+  tensorboard: true
+  
+# Exploration configuration
+exploration:
+  type: "epsilon_greedy"
+  initial_epsilon: 1.0
+  final_epsilon: 0.1
+  decay_steps: 100000

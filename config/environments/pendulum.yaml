@@ -1,0 +1,37 @@
+name: "Pendulum Environment"
+type: "Pendulum-v1"
+version: "1.0.0"
+
+# Environment parameters
+parameters:
+  # Common parameters
+  max_steps: 200
+  reward_scale: 1.0
+  
+  # Environment-specific parameters
+  env_specific:
+    gravity: 9.81
+    mass: 1.0
+    length: 1.0
+    max_torque: 2.0
+    dt: 0.05
+    
+# Observation space configuration
+observation_space:
+  type: "continuous"
+  shape: [3]
+  low: [-1.0, -1.0, -8.0]
+  high: [1.0, 1.0, 8.0]
+  
+# Action space configuration
+action_space:
+  type: "continuous"
+  shape: [1]
+  low: [-2.0]
+  high: [2.0]
+  
+# Rendering configuration
+rendering:
+  enabled: true
+  mode: "human"
+  fps: 30

@@ -1,0 +1,42 @@
+name: "SAC Agent"
+type: "SAC"
+version: "1.0.0"
+
+# Algorithm-specific parameters
+parameters:
+  # Common parameters
+  learning_rate: 0.0003
+  gamma: 0.99
+  batch_size: 256
+  buffer_size: 1000000
+  
+  # SAC-specific parameters
+  sac_specific:
+    alpha: 0.2
+    tau: 0.005
+    target_update_interval: 1
+    automatic_entropy_tuning: true
+    
+  # Network architecture
+  network:
+    hidden_layers: [256, 256]
+    activation: "relu"
+    output_activation: "tanh"
+    
+# Training configuration
+training:
+  max_steps: 1000000
+  max_episodes: 1000
+  eval_frequency: 10000
+  save_frequency: 50000
+  
+# Logging configuration
+logging:
+  level: "info"
+  metrics: ["reward", "critic_loss", "actor_loss", "alpha_loss", "temperature"]
+  tensorboard: true
+  
+# Exploration configuration
+exploration:
+  type: "stochastic_policy"
+  initial_temperature: 1.0

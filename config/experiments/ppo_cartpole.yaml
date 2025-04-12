@@ -1,0 +1,43 @@
+name: "PPO CartPole Experiment"
+description: "Training a PPO agent on the CartPole environment"
+version: "1.0.0"
+tags: ["reinforcement-learning", "discrete-action", "ppo", "cartpole"]
+
+# Agent configuration
+agent:
+  name: "ppo"
+  overrides:
+    parameters:
+      learning_rate: 0.0005
+      batch_size: 128
+      ppo_specific:
+        epsilon: 0.1
+    
+# Environment configuration
+environment:
+  name: "cartpole"
+  overrides:
+    parameters:
+      max_steps: 1000
+    
+# Experiment parameters
+parameters:
+  seed: 42
+  num_runs: 5
+  parallel: false
+  
+# Metrics to track
+metrics:
+  - name: "episode_reward"
+    type: "mean"
+  - name: "episode_length"
+    type: "mean"
+  - name: "policy_loss"
+    type: "mean"
+  - name: "value_loss"
+    type: "mean"
+    
+# Visualization configuration
+visualization:
+  enabled: true
+  plots: ["reward_curve", "loss_curve", "episode_length"]
